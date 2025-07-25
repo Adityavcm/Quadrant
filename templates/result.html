@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <section class="course">
+      <h1>Prediction Result</h1>
+      <div class="row">
+        <div class="course-col">
+          <h3>Status</h3>
+          <p>{{ result }}</p>
+        </div>
+        <div class="course-col">
+          <h3>Details</h3>
+          <p>
+            Orbital Period: {{ period }}<br />
+            Transit Time: {{ t0 }}<br />
+            Duration: {{ duration }}<br />
+            Radius: {{ radius }}
+          </p>
+        </div>
+        <div class="course-col">
+          <h3><a href="/">Go Back</a></h3>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
