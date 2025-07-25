@@ -112,7 +112,10 @@ nav img {
   margin: 20px 0;
 }
 
-.hero-btn {
+.hero-btn,
+.analyze-btn,
+.send-btn,
+.back-btn {
   display: inline-block;
   color: var(--text-white);
   border: 1px solid var(--button-border);
@@ -124,7 +127,10 @@ nav img {
   transition: all 0.3s ease;
 }
 
-.hero-btn:hover {
+.hero-btn:hover,
+.analyze-btn:hover,
+.send-btn:hover,
+.back-btn:hover {
   background-color: var(--button-hover-bg);
   color: white;
   transform: scale(1.03);
@@ -197,25 +203,6 @@ input[type="file"] {
   margin-bottom: 20px;
 }
 
-/* Analyze button */
-.analyze-btn {
-  background-color: var(--button-bg);
-  color: var(--text-white);
-  border: 1px solid var(--button-border);
-  padding: 12px 30px;
-  border-radius: 12px;
-  font-size: 20px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.analyze-btn:hover {
-  background-color: var(--button-hover-bg);
-  color: white;
-  transform: scale(1.03);
-  box-shadow: 0 0 10px var(--accent-blue);
-}
-
 /* CONTACT SECTION */
 .contact-form {
   display: flex;
@@ -232,25 +219,6 @@ input[type="file"] {
   border-radius: 6px;
   border: none;
   font-size: 16px;
-}
-
-/* Send Message Button */
-.send-btn {
-  background-color: var(--button-bg);
-  color: var(--text-white);
-  border: 1px solid var(--button-border);
-  border-radius: 12px;
-  padding: 12px 30px;
-  font-size: 20px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.send-btn:hover {
-  background-color: var(--button-hover-bg);
-  color: white;
-  transform: scale(1.03);
-  box-shadow: 0 0 10px var(--accent-blue);
 }
 
 /* FOOTER */

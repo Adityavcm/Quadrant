@@ -1,41 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Analysis Result</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
     <link rel="stylesheet" href="/static/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        background-color: var(--background-black);
+        color: var(--text-white);
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      .result-container {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        text-align: left;
+      }
+
+      .status-banner {
+        background-color: var(--overlay-black);
+        color: var(--accent-blue);
+        padding: 16px 20px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        border-left: 4px solid var(--accent-blue);
+        border-radius: 12px;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 1rem;
+      }
+
+      .data-table td {
+        padding: 14px 16px;
+        border-top: 1px solid var(--border-gray);
+        color: var(--text-light);
+        background-color: var(--card-hover-bg);
+      }
+
+      .data-table td:first-child {
+        font-weight: 600;
+        color: var(--text-white);
+      }
+
+      .graph img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+
+      .back-btn {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--text-white);
+        padding: 12px 24px;
+        border: 1px solid var(--border-gray);
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .back-btn:hover {
+        background-color: var(--accent-blue);
+        border-color: var(--accent-blue);
+        color: white;
+      }
+    </style>
   </head>
   <body>
-    <section class="course">
-      <h1>Prediction Result</h1>
-      <div class="row">
-        <div class="course-col">
-          <h3>Status</h3>
-          <p>{{ result }}</p>
-        </div>
-        <div class="course-col">
-          <h3>Details</h3>
-          <p>
-            Orbital Period: {{ period }}<br />
-            Transit Time: {{ t0 }}<br />
-            Duration: {{ duration }}<br />
-            Radius: {{ radius }}
-          </p>
-        </div>
-        <div class="course-col">
-          <h3><a href="/">Go Back</a></h3>
-        </div>
-      </div>
-      <div style="width: 100%; margin-top: 60px">
+    <div class="result-container">
+      <div class="status-banner">It is not an exoplanet.</div>
+
+      <table class="data-table">
+        <tr>
+          <td><strong>Orbital Period (days)</strong></td>
+          <td>1.001200120012001</td>
+        </tr>
+        <tr>
+          <td><strong>Transit Time (days)</strong></td>
+          <td>260.2338559743965</td>
+        </tr>
+        <tr>
+          <td><strong>Duration (days)</strong></td>
+          <td>0.05</td>
+        </tr>
+        <tr>
+          <td><strong>Radius (Earth radii)</strong></td>
+          <td>0.12623230494770696</td>
+        </tr>
+      </table>
+
+      <div class="graph">
+        <div id="loading">Loading chart...</div>
         <canvas id="lightCurveChart"></canvas>
       </div>
-    </section>
+
+      <br /><br />
+      <a class="back-btn" href="/">← Back to Upload</a>
+    </div>
 
     <script>
       const time = JSON.parse("{{ time | tojson | safe }}");
       const flux = JSON.parse("{{ flux | tojson | safe }}");
 
       const ctx = document.getElementById("lightCurveChart").getContext("2d");
+      const loadingText = document.getElementById("loading");
+
       const lightCurveChart = new Chart(ctx, {
         type: "line",
         data: {
@@ -53,6 +137,7 @@
           ],
         },
         options: {
+          responsive: true,
           scales: {
             x: {
               title: { display: true, text: "Time", color: "white" },
@@ -65,6 +150,11 @@
           },
           plugins: {
             legend: { labels: { color: "white" } },
+          },
+          animation: {
+            onComplete: () => {
+              if (loadingText) loadingText.style.display = "none";
+            },
           },
         },
       });
