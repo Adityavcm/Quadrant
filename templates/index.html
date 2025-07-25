@@ -1,49 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>The Quadrant Website</title>
     <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body>
+    <!-- Hero Section -->
+    <nav>
+      <a href="#"><img src="/static/images/logo.png" alt="logo" /></a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#analyze">ANALYZE</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </nav>
     <section class="header">
-      <nav>
-        <a href="#"><img src="/static/images/logo.png" alt="logo" /></a>
-        <div class="nav-links">
-          <ul>
-            <li><a href="">HOME</a></li>
-            <li><a href="">ABOUT</a></li>
-            <li><a href="">CONTACT</a></li>
-          </ul>
-        </div>
-      </nav>
       <div class="text-box">
-        <h1>Tagline</h1>
-        <p>Information about company</p>
+        <h1>The Quadrant</h1>
+        <p>Upload. Analyze. Discover Exoplanets.</p>
         <a href="#analyze" class="hero-btn">Get Started</a>
       </div>
     </section>
 
-    <section class="course">
-      <h1>Options We Offer</h1>
+    <!-- Analyze Section -->
+    <section class="course" id="analyze">
+      <h1>Analyze Your FITS File</h1>
+      <p>
+        Upload your .fits light curve data and let our ML pipeline detect
+        potential exoplanets.
+      </p>
       <div class="row">
         <div class="course-col">
-          <h3>Search</h3>
-          <p>Users can search through a massive database of Exoplanets.</p>
-        </div>
-        <div class="course-col" id="analyze">
-          <h3>Analyze</h3>
-          <p>Upload your dataset for analysis using the lightkurve package</p>
-          <form action="/analyze" method="post" enctype="multipart/form-data">
-            <input type="file" name="fits_file" accept=".fits" required />
-            <br /><br />
-            <button type="submit" class="hero-btn">Upload & Analyze</button>
-          </form>
+          <h3>Step 1</h3>
+          <p>
+            Select your .fits file from your system. Ensure it contains valid
+            light curve data.
+          </p>
         </div>
         <div class="course-col">
-          <h3>Fill In The Blanks</h3>
-          <p>A machine learning algorithm will fill in missing values</p>
+          <h3>Step 2</h3>
+          <p>
+            Click the "Analyze" button to submit. Our system will extract,
+            process, and evaluate the signal.
+          </p>
+        </div>
+        <div class="course-col">
+          <h3>Step 3</h3>
+          <p>
+            Receive instant analysis including visual plots and probability of
+            exoplanet transit.
+          </p>
         </div>
       </div>
+      <form action="/analyze" method="post" enctype="multipart/form-data">
+        <input
+          type="file"
+          name="fits_file"
+          accept=".fits"
+          required
+          class="file-upload-btn"
+        />
+        <br /><br />
+        <button type="submit" class="analyze-btn">Analyze</button>
+      </form>
     </section>
+
+    <!-- Contact Us Section -->
+    <section class="course" id="contact">
+      <h1>Contact Us</h1>
+      <p>Have a question or want to collaborate? We'd love to hear from you!</p>
+      <form action="/contact" method="post" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required /><br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        /><br />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Your Message"
+          required
+        ></textarea
+        ><br />
+        <button type="submit" class="send-btn">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        &copy; 2025 The Quadrant. All rights reserved. | Built for space
+        enthusiasts, researchers & explorers.
+      </p>
+    </footer>
   </body>
 </html>

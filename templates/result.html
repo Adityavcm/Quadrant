@@ -3,6 +3,7 @@
   <head>
     <title>Analysis Result</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <section class="course">
@@ -25,6 +26,48 @@
           <h3><a href="/">Go Back</a></h3>
         </div>
       </div>
+      <div style="width: 100%; margin-top: 60px">
+        <canvas id="lightCurveChart"></canvas>
+      </div>
     </section>
+
+    <script>
+      const time = JSON.parse("{{ time | tojson | safe }}");
+      const flux = JSON.parse("{{ flux | tojson | safe }}");
+
+      const ctx = document.getElementById("lightCurveChart").getContext("2d");
+      const lightCurveChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: time,
+          datasets: [
+            {
+              label: "Flux vs Time",
+              data: flux,
+              borderColor: "rgba(255,255,255,0.8)",
+              backgroundColor: "transparent",
+              pointRadius: 1,
+              borderWidth: 1,
+              tension: 0,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              title: { display: true, text: "Time", color: "white" },
+              ticks: { color: "white" },
+            },
+            y: {
+              title: { display: true, text: "Flux", color: "white" },
+              ticks: { color: "white" },
+            },
+          },
+          plugins: {
+            legend: { labels: { color: "white" } },
+          },
+        },
+      });
+    </script>
   </body>
 </html>

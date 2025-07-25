@@ -34,6 +34,11 @@ async def analyze(request: Request, fits_file: UploadFile = File(...)):
         lc = pixel_file.to_lightcurve(aperture_mask=pixel_file.pipeline_mask)
         flat_lc = lc.flatten()
 
+        # Extract time and flux for Chart.js
+        time_values = flat_lc.time.value.tolist()
+        flux_values = flat_lc.flux.value.tolist()
+
+        # Run BLS
         period = np.linspace(1, 5, 10000)
         bls = lc.to_periodogram(method="bls", period=period, frequency_factor=500)
 
@@ -66,6 +71,8 @@ async def analyze(request: Request, fits_file: UploadFile = File(...)):
                 "t0": planet_x_t0,
                 "duration": planet_x_dur,
                 "radius": exoplanet_radius,
+                "time": time_values,
+                "flux": flux_values,
             },
         )
     except Exception as e:
@@ -78,5 +85,7 @@ async def analyze(request: Request, fits_file: UploadFile = File(...)):
                 "t0": "-",
                 "duration": "-",
                 "radius": "-",
+                "time": [],
+                "flux": [],
             },
         )
