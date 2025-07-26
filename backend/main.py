@@ -89,3 +89,9 @@ async def analyze(request: Request, fits_file: UploadFile = File(...)):
                 "flux": [],
             },
         )
+
+
+if __name__ == "__main__":
+    from uvicorn import run
+
+    run(app)
