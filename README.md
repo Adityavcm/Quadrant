@@ -67,7 +67,8 @@ pip install -r requirements.txt
 ## 🏃 Run the App
 
 ```bash
-uvicorn backend.main:app --reload
+cd backend
+uvicorn main:app --reload
 ```
 
 Then open your browser and visit:
