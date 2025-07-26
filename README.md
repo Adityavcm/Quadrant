@@ -53,7 +53,18 @@ cd Quadrant
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+If on Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+For Linux Users:
+
+```bash
+source .venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -72,7 +83,7 @@ uvicorn main:app --reload
 ```
 
 Then open your browser and visit:
-➡️ `http://127.0.0.1:8000/`
+➡️ [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ---
 
