@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ```bash
 cd backend
-uvicorn main:app --reload
+python main.py
 ```
 
 Then open your browser and visit:
