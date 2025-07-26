@@ -99,7 +99,7 @@ Then open your browser and visit:
 
 ## 📬 Contact
 
-Made with ❤️ by [Aditya Chapparadahallimath](https://github.com/Adityavcm), [S K Avinash](https://github.com/Aviator1223), [Rohith Kuruvilla](https://github.com/Rohith-X-Kuruviulla-P) and [Srinidhi P Rao](https://github.com/SrinidhiPRao)
+Made with ❤️ by [Aditya Chapparadahallimath](https://github.com/Adityavcm), [S K Avinaash](https://github.com/Aviator1245), [Rohith Kuruvilla](https://github.com/Rohith-X-Kuruviulla-P) and [Srinidhi P Rao](https://github.com/SrinidhiPRao)
 
 > Feel free to reach out for suggestions, collaborations, or issues!
 
